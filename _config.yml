@@ -10,7 +10,7 @@
 locale                   : "en-US"
 site_theme               : "default"
 title                    : "about me"
-title_separator          : # ""
+title_separator          : "-"
 name                     : &name "Bianca De Sanctis"
 description              : &description ""
 url                      : https://bdesanctis.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
@@ -23,11 +23,11 @@ repository               : "bdesanctis/bdesanctis.github.io"
 author:
   # Biographic information
   avatar           : "/files/bianca.jpg"
-  name             : # "Your Sidebar Name"
+  name             : "Bianca De Sanctis"
   pronouns         : # example: "she/her"  
   bio              : # "Short biography for the left-hand sidebar"
-  location         : # "University of Cambridge, UK"
-  employer         : # "Red Brick University"
+  location         : # "Department of Genetics"
+  employer         : # "University of Cambridge"
   uri              : # URL
   email            : "bddesanctis@gmail.com" 
 
