@@ -1,2 +1,2 @@
 # bdesanctis.github.io
-academic website
+Repo for my academic website. Feel free to reuse code.
