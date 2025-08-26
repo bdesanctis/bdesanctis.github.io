@@ -1,0 +1,59 @@
+
+
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 2em auto;
+    padding: 0 1em;
+    gap: 2em;
+    align-items: center;
+}
+
+.profile-column {
+    flex: 1 1 300px;
+    max-width: 320px;
+    text-align: center;
+}
+.profile-pic {
+    width: 220px;              /* 220px × 1.2 = 264px */
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;       /* Softer edges instead of full circle - set to 40px or try different numbers , set 50% for circle */
+}
+
+.profile-name {
+    margin-top: 0.8em;
+    font-size: 1.8em;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Icon styling */
+.icon-links {
+    margin-top: 0.8em;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    line-height: 0;
+}
+.icon-links a {
+    color: var(--bluesky-blue);
+    transition: color 0.2s ease;
+}
+.icon-links a:hover {
+    color: var(--bluesky-blue-hover);
+}
+.icon-links a svg {
+    vertical-align: middle;
+    display: inline-block;
+    height: 26px;
+    width: 26px;
+}
+
+/* Text column */
+.text-column {
+    flex: 2 1 450px;
+    padding-top: 1.2em;
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fieldwork pics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="common.css" />
+  <link rel="stylesheet" href="fieldwork.css" />
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="index.html">About</a>
+    <a href="research.html">Research</a>
+    <a href="fieldwork.html">Fieldwork pics</a>
+  </nav>
+
+  <div class="banner">
+    <img src="images/banner2smal.jpeg" alt="Banner Image" />
+  </div>
+
+  <h1 class="page-title">Fieldwork pics</h1>
+
+    <main>
+      <div class="description-top">
+        I’ve been lucky to do some cool fieldwork throughout my PhD and postdoc.
+        Here are some pictures from work coring lakes in Oregon, Washington and Iceland, collecting soil and leaves in Haida Gwaii, Canada, and collecting Yponomeuta caterpillars in England. Photos were taken by me unless otherwise stated.
+        <br>Click to enlarge a picture.<br><br>
+      </div>
+
+      <div class="gallery-grid" aria-label="Fieldwork image gallery">
+        <!-- thumbnails inserted here by JS -->
+      </div>
+
+    </main>
+
+    <div class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-caption">
+      <div class="modal-content">
+        <button class="modal-close-btn" aria-label="Close large image">&times;</button>
+        <button class="modal-arrow modal-arrow-left" aria-label="Previous image">&lt;</button>
+        <button class="modal-arrow modal-arrow-right" aria-label="Next image">&gt;</button>
+
+        <img src="" alt="" />
+        <div id="modal-caption" class="modal-caption"></div>
+      </div>
+    </div>
+
+    <script>const images = [
+      { src: "images/fieldworkpics/haida5.jpeg", caption: "Me sampling soil for environmental DNA in the temperate coastal rainforest in Haida Gwaii, Canada. Photo by Zoe Colloredo-Mansfeld." },
+      { src: "images/fieldworkpics/haida1.png", caption: "Ireland Sherrill shooting into the rainforest tree canopy to obtain canopy leaves in Haida Gwaii, Canada." },
+      { src: "images/fieldworkpics/haida3.jpg", caption: "Ireland Sherrill climbing up ferns in Haida Gwaii." },
+      { src: "images/fieldworkpics/haida4.png", caption: "Ireland Sherrill, Zoe Colloredo-Mansfeld and I (in matching outfits) after a day of sampling in Haida Gwaii." },
+      { src: "images/fieldworkpics/haida6.jpeg", caption: "Me sampling soil in Haida Gwaii. Photo by Zoe Colloredo-Mansfeld." },
+      { src: "images/fieldworkpics/haida7.jpeg", caption: "Ireland Sherrill and I on the way to our next site in Haida Gwaii. Photo by Zoe Colloredo-Mansfeld." },
+    { src: "images/fieldworkpics/gordonlake3.jpeg", caption: "Setting up for coring on Gordon lake, Oregon." },
+    { src: "images/fieldworkpics/gordonlake4.jpeg", caption: "Wading in Gordon lake to set up the coring platform. Photo by Yucheng Wang." },
+    { src: "images/fieldworkpics/gordonlake5.jpeg", caption: "William Nanavati returning from a short trip to check depths in Gordon lake" },
+    { src: "images/fieldworkpics/gordonlake6.jpeg", caption: "Assessing a surface core on Gordon lake with Dan Gavin. Photo by Yucheng Wang." },
+    { src: "images/fieldworkpics/minerallake3.jpeg", caption: "Pulling a core out of Mineral lake, Washington. Photo by Yucheng Wang." },
+    { src: "images/fieldworkpics/minerallake2.jpeg", caption: "Our canoe on Mineral lake. Later this day, I fell out of this canoe and lost my phone to the lake." },
+    { src: "images/fieldworkpics/dangavin.jpg", caption: "Dan Gavin pleased about the stratigraphy in a core from Mineral lake" },
+    { src: "images/fieldworkpics/core.jpeg", caption: "Tephra layer from an ancient volcanic eruption in a core from Mineral lake" },
+    { src: "images/fieldworkpics/icelandcoring1.jpg", caption: "Holding a core from a lake in Northeastern Iceland, with Wesley Randall Farnsworth, Thorfinn Korneliussen and Sveinbjörn Steinþórsson . Photo by Nicolaj Larsen." },
+    { src: "images/fieldworkpics/icelandcoring2.jpg", caption: "Thorfinn Korneliussen drilling a hole to access a lake in Iceland" },
+    { src: "images/fieldworkpics/icelandcoring3.jpg", caption: "A lake we cored in Northeastern Iceland" },
+    { src: "images/fieldworkpics/iceland4.jpg", caption: "Having a stretch on the frozen lake in between coring in Iceland" },
+    { src: "images/fieldworkpics/iceland5.jpg", caption: "Wesley Randall Farnsworth pointing out the layers in an Iceland core" },
+    { src: "images/fieldworkpics/yponomeuta2.jpg", caption: "A nest of Yponomeuta evonymella caterpillars on a bird cherry tree in Cambridge, UK" },
+    { src: "images/fieldworkpics/yponomeuta3.jpg", caption: "A nest of Yponomeuta evonymella caterpillars on a bird cherry tree in Cambridge, UK" },
+    { src: "images/fieldworkpics/yponomeuta4.jpg", caption: "Collecting Yponomeuta caterpillars in Cambridge, UK" },
+    { src: "images/fieldworkpics/yponomeuta5.jpg", caption: "Moritz Blumer and a nest of Yponomeuta rorrella on a willow tree in Cambridge, UK" },
+    { src: "images/fieldworkpics/yponomeuta7.png", caption: "Me in a tree handing Yponomeuta samples down to Moritz Blumer in Cambridge, UK. Photo by Fred Johnstone." }
+  ];
+
+  const galleryGrid = document.querySelector('.gallery-grid');
+  const modalOverlay = document.querySelector('.modal-overlay');
+  const modalImage = modalOverlay.querySelector('img');
+  const modalCaption = modalOverlay.querySelector('.modal-caption');
+  const modalCloseBtn = modalOverlay.querySelector('.modal-close-btn');
+  const modalArrowLeft = modalOverlay.querySelector('.modal-arrow-left');
+  const modalArrowRight = modalOverlay.querySelector('.modal-arrow-right');
+
+  let currentIndex = 0;
+
+  images.forEach(({src, caption}, i) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = caption;
+    img.tabIndex = 0;
+    img.addEventListener('click', () => openModal(i));
+    img.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(i);
+      }
+    });
+    galleryGrid.appendChild(img);
+  });
+
+  function showImage(index) {
+    const { src, caption } = images[index];
+    modalImage.src = src;
+    modalImage.alt = caption;
+    modalCaption.textContent = caption;
+    currentIndex = index;
+  }
+
+  function openModal(index) {
+    showImage(index);
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    modalCloseBtn.focus();
+  }
+
+  function closeModal() {
+    modalOverlay.classList.remove('active');
+    modalImage.src = '';
+    modalCaption.textContent = '';
+    document.body.style.overflow = '';
+  }
+
+  // Arrow navigation handlers
+  function showPrevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  }
+
+  function showNextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  }
+
+  modalCloseBtn.addEventListener('click', closeModal);
+  modalArrowLeft.addEventListener('click', showPrevImage);
+  modalArrowRight.addEventListener('click', showNextImage);
+
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!modalOverlay.classList.contains('active')) return;
+
+    if (e.key === 'Escape') {
+      closeModal();
+    } else if (e.key === 'ArrowLeft') {
+      showPrevImage();
+    } else if (e.key === 'ArrowRight') {
+      showNextImage();
+    }
+  });
+
+    </script>
+</body>
+</html>

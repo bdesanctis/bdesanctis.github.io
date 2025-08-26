@@ -1,0 +1,57 @@
+:root {
+    --bluesky-blue: #1185FE;
+    --bluesky-blue-hover: #0E6DDC; /* Slightly darker for hover */
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0;
+    background-color: white;
+    color: #333;
+}
+
+/* Navigation bar */
+.navbar {
+    background-color: black;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5em 1em;
+    flex-wrap: wrap; /* allow wrapping */
+    box-sizing: border-box; /* include padding in width */
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        justify-content: center; /* center links on small */
+    }
+    .navbar a {
+        margin: 0.3em 0.5em; /* reduce margins */
+        padding: 0.4em 0.6em;
+        font-size: 14px;
+    }
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1.5em;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    display: inline-block;
+    font-size: 17px;
+}
+.navbar a:hover {
+    background-color: #222;
+    border-radius: 4px;
+}
+
+/* Banner */
+.banner img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
